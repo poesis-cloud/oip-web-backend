@@ -1,4 +1,4 @@
-name: itip-web-backend-ci
+name: oip-web-backend-ci
 
 on:
   push:
@@ -103,7 +103,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: itip-web-backend-test-reports
+          name: oip-web-backend-test-reports
           path: |
             target/surefire-reports
             target/failsafe-reports

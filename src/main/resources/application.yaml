@@ -1,6 +1,6 @@
 spring:
   application:
-    name: itip-web-backend
+    name: oip-web-backend
   datasource:
     url: ${DB_URL:${SPRING_DATASOURCE_URL:}}
     username: ${DB_USER:${SPRING_DATASOURCE_USERNAME:}}
@@ -19,12 +19,12 @@ spring:
     enabled: true
     change-log: classpath:db/changelog/db.changelog-master.yaml
 
-itip:
+oip:
   security:
-    permit-all: ${ITIP_SECURITY_PERMIT_ALL:false}
+    permit-all: ${OIP_SECURITY_PERMIT_ALL:false}
     jwt:
-      secret: ${ITIP_SECURITY_JWT_SECRET:}
-      expiration-ms: ${ITIP_SECURITY_JWT_EXPIRATION_MS:3600000}
+      secret: ${OIP_SECURITY_JWT_SECRET:}
+      expiration-ms: ${OIP_SECURITY_JWT_EXPIRATION_MS:3600000}
 
 server:
   port: ${SERVER_PORT:8080}

@@ -2,21 +2,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "itip-web-backend.fullname" . }}
+  name: {{ include "oip-web-backend.fullname" . }}
   labels:
-    app: {{ include "itip-web-backend.fullname" . }}
+    app: {{ include "oip-web-backend.fullname" . }}
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: {{ include "itip-web-backend.fullname" . }}
+      app: {{ include "oip-web-backend.fullname" . }}
   template:
     metadata:
       labels:
-        app: {{ include "itip-web-backend.fullname" . }}
+        app: {{ include "oip-web-backend.fullname" . }}
     spec:
       containers:
-        - name: itip-web-backend
+        - name: oip-web-backend
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
@@ -30,21 +30,21 @@ spec:
             - name: DB_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: {{ include "itip-web-backend.fullname" . }}-secret
+                  name: {{ include "oip-web-backend.fullname" . }}-secret
                   key: DB_PASSWORD
             {{- if .Values.env.SPRING_PROFILES_ACTIVE }}
             - name: SPRING_PROFILES_ACTIVE
               value: {{ .Values.env.SPRING_PROFILES_ACTIVE | quote }}
             {{- end }}
-            - name: ITIP_SECURITY_PERMIT_ALL
-              value: {{ .Values.env.ITIP_SECURITY_PERMIT_ALL | quote }}
-            - name: ITIP_SECURITY_JWT_EXPIRATION_MS
-              value: {{ .Values.env.ITIP_SECURITY_JWT_EXPIRATION_MS | quote }}
-            - name: ITIP_SECURITY_JWT_SECRET
+            - name: OIP_SECURITY_PERMIT_ALL
+              value: {{ .Values.env.OIP_SECURITY_PERMIT_ALL | quote }}
+            - name: OIP_SECURITY_JWT_EXPIRATION_MS
+              value: {{ .Values.env.OIP_SECURITY_JWT_EXPIRATION_MS | quote }}
+            - name: OIP_SECURITY_JWT_SECRET
               valueFrom:
                 secretKeyRef:
-                  name: {{ include "itip-web-backend.fullname" . }}-secret
-                  key: ITIP_SECURITY_JWT_SECRET
+                  name: {{ include "oip-web-backend.fullname" . }}-secret
+                  key: OIP_SECURITY_JWT_SECRET
           readinessProbe:
             httpGet:
               path: /actuator/health

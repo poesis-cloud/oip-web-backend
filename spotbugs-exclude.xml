@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  SpotBugs exclusion filter for itip-web-backend.
+  SpotBugs exclusion filter for oip-web-backend.
 
   Every entry below is a verified false positive caused by a framework constraint
   where a root-cause fix is impossible.

@@ -1,19 +1,19 @@
-# PROJECT_BRIEF.md — itip-web-backend
+# PROJECT_BRIEF.md — oip-web-backend
 
 > Last updated: 2025-07 | Sprint 0 | Status: Scaffolded
 
 ## 1. Project Overview
 
-`itip-web-backend` is the REST API backend for the IT Intelligence Platform (ITIP).
-It acts as a Backend-for-Frontend (BFF) between `itip-web-frontend` and the SIE services
-(`sie-definition-manager`, `sie-definition-blackboard-manager`), translating the
+`oip-web-backend` is the REST API backend for the Organizational Intelligence Platform (OIP).
+It acts as a Backend-for-Frontend (BFF) between `oip-web-frontend` and the SIE services
+(`sie-definition-manager`, `sis-blackboard-manager`), translating the
 Generative System Model (GSM) for the IT governance domain. It exposes appraisal
 indicator APIs, governance framework APIs, and GSM definition query endpoints, with
 tenant-aware caching.
 
 ## 2. Concept / Product Description
 
-ITIP operationalises GSM-governed IT governance for enterprises. The backend:
+OIP operationalises GSM-governed IT governance for enterprises. The backend:
 
 - Aggregates **29 appraisal indicator mechanisms** across **7 bilateral classes**
   (meta-governance + governance zones) into per-tenant dashboards.
@@ -21,7 +21,7 @@ ITIP operationalises GSM-governed IT governance for enterprises. The backend:
   SAFe, ITIL, GDPR, NIS2, and DORA.
 - Delegates GSM definition queries to `sie-definition-manager` (Ascription lifecycle,
   Archetype resolution).
-- Delegates definition sourcing queries to `sie-definition-blackboard-manager`.
+- Delegates definition sourcing queries to `sis-blackboard-manager`.
 - Caches aggregated payloads per tenant+indicator; TTL is configurable per environment.
 
 ## 3. Tech Stack
@@ -39,11 +39,11 @@ ITIP operationalises GSM-governed IT governance for enterprises. The backend:
 
 ```
 +-------------------------------------------------------+
-|  itip-web-frontend  (React / TypeScript)              |
+|  oip-web-frontend  (React / TypeScript)              |
 +------------------------+------------------------------+
                          | HTTPS REST (JWT bearer)
 +------------------------v------------------------------+
-|  itip-web-backend  (BFF — Spring Boot 3.5 / Java 25) |
+|  oip-web-backend  (BFF — Spring Boot 3.5 / Java 25) |
 |                                                       |
 |  AppraisalController  ->  AppraisalBffService         |
 |  FrameworkController  ->  FrameworkBffService         |
@@ -63,8 +63,8 @@ ITIP operationalises GSM-governed IT governance for enterprises. The backend:
 
 | Area           | Path                                                             | Contents                                         |
 | -------------- | ---------------------------------------------------------------- | ------------------------------------------------ |
-| Entry point    | `src/main/java/cloud/poesis/itip/ItipWebBackendApplication.java` | Spring Boot main                                 |
-| Source root    | `src/main/java/cloud/poesis/itip/`                               | All application code                             |
+| Entry point    | `src/main/java/cloud/poesis/oip/OipWebBackendApplication.java` | Spring Boot main                                 |
+| Source root    | `src/main/java/cloud/poesis/oip/`                               | All application code                             |
 | Resources      | `src/main/resources/`                                            | `application.yaml`, logback config               |
 | Tests          | `src/test/java/`                                                 | Unit + integration tests (JaCoCo >=95%)          |
 | Helm chart     | `ops/helm/`                                                      | `Chart.yaml`, `templates/`, `environments/`      |
@@ -116,7 +116,7 @@ ITIP operationalises GSM-governed IT governance for enterprises. The backend:
 
 - No controllers or service implementations.
 - No caching configuration.
-- No integration with `sie-definition-manager` or `sie-definition-blackboard-manager`.
+- No integration with `sie-definition-manager` or `sis-blackboard-manager`.
 
 **What's next (Sprint 1):**
 
@@ -139,7 +139,7 @@ ITIP operationalises GSM-governed IT governance for enterprises. The backend:
 ```bash
 # Prerequisites: Java 25, Maven, kubectl (local cluster), Helm 3
 make dev-check          # Verify prerequisites and cluster context
-make dev-up             # Deploy Helm chart to local cluster (itip namespace)
+make dev-up             # Deploy Helm chart to local cluster (oip namespace)
 
 # Configure local secrets
 cp .env.dev.example .env.dev   # fill in service URLs, JWT issuer
@@ -153,7 +153,7 @@ mvn spring-boot:run
 
 ```bash
 # Preprod
-helm upgrade --install itip-web-backend ops/helm \
+helm upgrade --install oip-web-backend ops/helm \
   -f ops/helm/environments/preprod/values.yaml --namespace sie
 
 # Prod — via CD pipeline only; do not deploy manually
@@ -196,8 +196,8 @@ Close with `Fixes #NN` in commits.
 Each team works in their own clone. No worktrees.
 
 ```bash
-git clone git@github.com:poesis-cloud/itip-web-backend.git itip-web-backend-dev
-git clone git@github.com:poesis-cloud/itip-web-backend.git itip-web-backend-qa
+git clone git@github.com:poesis-cloud/oip-web-backend.git oip-web-backend-dev
+git clone git@github.com:poesis-cloud/oip-web-backend.git oip-web-backend-qa
 ```
 
 **Branches:**

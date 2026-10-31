@@ -8,8 +8,8 @@ RUN mvn -DskipTests package
 FROM eclipse-temurin:25-jre-jammy
 WORKDIR /app
 
-COPY --from=build /workspace/target/itip-web-backend-1.0.0-SNAPSHOT.jar /app/itip-web-backend.jar
+COPY --from=build /workspace/target/oip-web-backend-1.0.0-SNAPSHOT.jar /app/oip-web-backend.jar
 
 EXPOSE 8080
 
-ENTRYPOINT ["java", "-jar", "/app/itip-web-backend.jar"]
+ENTRYPOINT ["java", "-jar", "/app/oip-web-backend.jar"]
