@@ -1,6 +1,6 @@
-# itip-web-backend deployables
+# oip-web-backend deployables
 
-This folder contains ops/runtime assets for the itip-web-backend service.
+This folder contains ops/runtime assets for the oip-web-backend service.
 
 - `ops/helm/`: Helm chart for Kubernetes deployments (dev/preprod/prod)
 
@@ -11,9 +11,9 @@ Chart path: `ops/helm`
 Install with defaults:
 
 ```bash
-helm upgrade --install itip-web-backend \
-  itip-web-backend/ops/helm \
-  -n itip --create-namespace
+helm upgrade --install oip-web-backend \
+  oip-web-backend/ops/helm \
+  -n oip --create-namespace
 ```
 
 Environment values:
@@ -27,16 +27,16 @@ Each environment file is self-contained and carries the chart defaults for that 
 Recommended deploy command:
 
 ```bash
-helm upgrade --install itip-web-backend \
-  itip-web-backend/ops/helm \
-  -n itip --create-namespace \
-  -f itip-web-backend/ops/helm/environments/preprod/values.yaml
+helm upgrade --install oip-web-backend \
+  oip-web-backend/ops/helm \
+  -n oip --create-namespace \
+  -f oip-web-backend/ops/helm/environments/preprod/values.yaml
 ```
 
 Secrets policy:
 
 - Never commit production secrets in values files.
-- Inject `secrets.DB_PASSWORD` and `secrets.ITIP_SECURITY_JWT_SECRET` at deploy time
+- Inject `secrets.DB_PASSWORD` and `secrets.OIP_SECURITY_JWT_SECRET` at deploy time
   (`--set-string`) or from a cluster secret manager.
 
 Schema validation:
@@ -44,29 +44,29 @@ Schema validation:
 - Validate before deploy:
 
 ```bash
-helm lint itip-web-backend/ops/helm \
-  -f itip-web-backend/ops/helm/environments/preprod/values.yaml \
+helm lint oip-web-backend/ops/helm \
+  -f oip-web-backend/ops/helm/environments/preprod/values.yaml \
   --set-string secrets.DB_PASSWORD=lint-only \
-  --set-string secrets.ITIP_SECURITY_JWT_SECRET=lint-only-lint-only-lint-only-1234
+  --set-string secrets.OIP_SECURITY_JWT_SECRET=lint-only-lint-only-lint-only-1234
 ```
 
 ## Dev deployment
 
-Use `make dev-up` from `itip-web-backend` to deploy the service to your local cluster.
+Use `make dev-up` from `oip-web-backend` to deploy the service to your local cluster.
 
 ```bash
-cd itip-web-backend && make dev-check
-cd itip-web-backend && make dev-up
+cd oip-web-backend && make dev-check
+cd oip-web-backend && make dev-up
 ```
 
 Run locally:
 
 ```bash
-cd itip-web-backend && make run-api
+cd oip-web-backend && make run-api
 ```
 
 Stop:
 
 ```bash
-cd itip-web-backend && make dev-down
+cd oip-web-backend && make dev-down
 ```

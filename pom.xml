@@ -11,11 +11,11 @@
     <relativePath/>
   </parent>
 
-  <groupId>cloud.poesis.itip</groupId>
-  <artifactId>itip-web-backend</artifactId>
+  <groupId>cloud.poesis.oip</groupId>
+  <artifactId>oip-web-backend</artifactId>
   <version>1.0.0-SNAPSHOT</version>
-  <name>itip-web-backend</name>
-  <description>ITIP Web Backend — BFF service for itip-web-frontend</description>
+  <name>oip-web-backend</name>
+  <description>OIP Web Backend — BFF service for oip-web-frontend</description>
 
   <properties>
     <java.version>25</java.version>

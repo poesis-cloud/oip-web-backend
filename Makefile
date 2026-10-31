@@ -7,9 +7,9 @@ SHELL := /bin/bash
 -include .env
 -include .env.dev
 
-NAMESPACE        ?= itip
+NAMESPACE        ?= oip
 DEPLOY_ENV       ?= preprod
-RELEASE          ?= itip-web-backend
+RELEASE          ?= oip-web-backend
 
 CHART            ?= ./ops/helm
 ENV_FILE         ?= $(CHART)/environments/$(DEPLOY_ENV)/values.yaml
@@ -42,8 +42,8 @@ dev-up:
 	-f $(CHART)/environments/dev/values.yaml \
 	--set persistence.enabled=true \
 	--set-string secrets.DB_PASSWORD="$${DB_PASSWORD:-dev-password}" \
-	--set-string secrets.ITIP_SECURITY_JWT_SECRET="$${ITIP_SECURITY_JWT_SECRET:-dev-jwt-secret-0123456789abcdef0123456789}"
-	@echo "itip-web-backend deployed. Run: make run-api"
+	--set-string secrets.OIP_SECURITY_JWT_SECRET="$${OIP_SECURITY_JWT_SECRET:-dev-jwt-secret-0123456789abcdef0123456789}"
+	@echo "oip-web-backend deployed. Run: make run-api"
 
 dev-down:
 	@PID=$$(lsof -ti :8080 2>/dev/null); \

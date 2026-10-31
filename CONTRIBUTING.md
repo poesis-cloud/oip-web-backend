@@ -1,4 +1,4 @@
-# Contributing to the ITIP Web Backend
+# Contributing to the OIP Web Backend
 
 This repository is published under the Business Source License 1.1 (BUSL-1.1) (see `LICENSE`). It can be distributed and published independently of the Poesis workspace, so its contribution terms are **self-contained here** and travel with the repository.
 

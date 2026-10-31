@@ -1,16 +1,16 @@
-# Copilot Instructions — itip-web-backend
+# Copilot Instructions — oip-web-backend
 
 These instructions are mandatory for all Copilot work in this repository. They apply to the
-`itip-web-backend` Spring Boot BFF only. Keep this file concise and update it whenever the
+`oip-web-backend` Spring Boot BFF only. Keep this file concise and update it whenever the
 project conventions change.
 
 ## Project Anchor
 
 - Always read `PROJECT_BRIEF.md` before non-trivial work and keep it aligned when project state,
   runtime assumptions, deployment flow, or sprint status change.
-- Treat `itip-web-backend` as the REST Backend-for-Frontend for ITIP. It translates IT-domain needs
+- Treat `oip-web-backend` as the REST Backend-for-Frontend for OIP. It translates IT-domain needs
   into calls toward SIE services such as `sie-definition-manager` and
-  `sie-definition-blackboard-manager`.
+  `sis-blackboard-manager`.
 - Preserve the current stack unless explicitly asked otherwise: Java 25, Spring Boot 3.5.x, Maven,
   PostgreSQL, Liquibase, Spring Security with custom JWT bearer filter and service, Docker,
   Kubernetes, and Helm.
@@ -87,7 +87,7 @@ project conventions change.
 
 ## Ops and Configuration
 
-- Kubernetes namespace for this service is `itip` by default. Do not confuse it with the OIDC realm
+- Kubernetes namespace for this service is `oip` by default. Do not confuse it with the OIDC realm
   name, which may still be `sie`.
 - Use the Makefile contract: `dev-check`, `dev-up`, `dev-down`, `prod-deploy`, and `package-helm`.
 - Helm values live only under:
