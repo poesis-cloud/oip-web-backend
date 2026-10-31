@@ -53,8 +53,8 @@ OIP operationalises GSM-governed IT governance for enterprises. The backend:
 +----------+----------------------------+---------------+
            | REST/HTTP                  | REST/HTTP
 +----------v-----------+   +-----------v---------------+
-| sie-definition-       |   | sie-definition-blackboard |
-| manager               |   | -manager                  |
+| sie-definition-       |   | sis-blackboard-manager    |
+| manager               |   |                           |
 | (GSM / Ascription)    |   | (definition sourcing)     |
 +-----------------------+   +---------------------------+
 ```
